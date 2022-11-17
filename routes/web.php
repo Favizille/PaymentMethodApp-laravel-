@@ -27,3 +27,13 @@ Route::get('/payment', [PaymentController::class, 'payment'])->name('payment_vie
 Route::get('/paymentMethod', [PaymentController::class, 'paymentMethod'])->name('payment_method_view');
 // Route::get('/stripe-payment', [PaymentController::class, 'handleGet'])->name("stripe_view");
 Route::get('/billing-portal', [PaymentController::class, "billingPortal"])->name("billing_portal");
+Route::post('/purchase',[PaymentController::class, "purchase"])->name("purchase");
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::post('/get-template', [PaymentController::class, 'process'])->name('templates.pay');
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment');
+Route::get('/payment/paystack',[PaymentController::class, 'paystackpayment'])->name('paystackpayment');
+Route::get('/payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
+
+
+Route::get('/payments/paystack_view', [PaymentController::class, 'paystackView'])->name('paystack.view');
+Route::get('verify-payment/{reference}',[PaymentController::class, 'verify']);

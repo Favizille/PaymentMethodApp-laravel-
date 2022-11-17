@@ -17,7 +17,7 @@
                 <p class="text-muted">Choose your payment method to pay</p>
             </div>
             <div class="payment mb-2">
-                <a href="#">
+                <a href="{{route("paystack.view")}}">
                     <div class="btn btn-primary">
                         <div>
                             <span class="far fa-credit-card pay"></span>

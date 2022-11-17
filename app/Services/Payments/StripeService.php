@@ -1,4 +1,9 @@
+<?php
+
 namespace App\Services\Payments;
+use Stripe\Charge;
+use Stripe\Stripe;
+use Illuminate\Support\Facades\Session;
 use App\Contracts\Payments\PaymentContract;
 
 /**
@@ -7,7 +12,8 @@ use App\Contracts\Payments\PaymentContract;
 class StripeService implements PaymentContract
 {
 
-    public function handlePost(Request $request)
+
+    public function handlePost($request)
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));
         Charge::create ([
@@ -21,4 +27,13 @@ class StripeService implements PaymentContract
 
         return back();
     }
+
+    public function getRedirectPage($request){
+        //To DO
+    }
+
+    public function processCallback(){
+        //To Do
+    }
+
 }
